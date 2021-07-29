@@ -1,0 +1,55 @@
+#mybatis配置文件
+mybatis-plus:
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath:mybatis/mybatismapper/**.xml
+  type-aliases-package: org.ygx.crudtaskmanager.module
+#  type-enums-package: org.ygx.crudtaskmanager.enums
+#数据库连接
+spring:
+  application:
+    name: crud-task-manager
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: 123456
+    url: jdbc:mysql://localhost:3306/task_manager
+    username: root
+  #quartz配置
+  quartz:
+    jdbc:
+      # 初始化Quartz表结构,项目第一次启动配置程always,然后改成never 否则已生成的job会被初始化掉
+      initialize-schema: never
+    #设置quartz任务的数据持久化方式，默认是内存方式
+    job-store-type: jdbc
+    properties:
+      org:
+        quartz:
+          scheduler:
+            instanceName: DefaultQuartzScheduler #调度器实例名称
+            instanceId: AUTO #调度器实例编号自动生成
+          jobStore:
+            class: org.quartz.impl.jdbcjobstore.JobStoreTX #持久化方式配置
+            driverDelegateClass: org.quartz.impl.jdbcjobstore.StdJDBCDelegate #持久化方式配置数据驱动，MySQL数据库
+            tablePrefix: QRTZ_ #quartz相关数据表前缀名
+            isClustered: true #开启分布式部署
+            clusterCheckinInterval: 10000 #分布式节点有效性检查时间间隔，单位：毫秒
+            useProperties: false #配置是否使用
+          threadPool:
+            class: org.quartz.simpl.SimpleThreadPool #线程池实现类
+            threadCount: 100 #执行最大并发线程数量
+            threadPriority: 5 #线程优先级
+            threadsInheritContextClassLoaderOfInitializingThread: true #配置是否启动自动加载数据库内的定时任务，默认true
+#服务配置
+server:
+  servlet:
+   context-path: /quartz
+  # 服务端口
+  port: 8080
+  # session最大超时时间(分钟)，默认为30
+  session-timeout: 60
+  tomcat:
+    # tomcat的URI编码
+   uri-encoding: UTF-8
+    # tomcat最大线程数，默认为200
+   threads:
+     max: 100
+
