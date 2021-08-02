@@ -5,10 +5,6 @@ import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.intellij.lang.annotations.Pattern;
-import org.springframework.beans.factory.annotation.Value;
-
-import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotBlank;
 
@@ -29,6 +25,7 @@ public class TaskEntity extends Model<TaskEntity> {
      */
     @TableId(value = "ID", type = IdType.AUTO)
     @TableField(select = false)
+    @Version
     private Integer id;
     /**
      * 任务名称

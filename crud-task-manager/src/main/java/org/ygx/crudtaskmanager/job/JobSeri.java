@@ -1,12 +1,10 @@
 package org.ygx.crudtaskmanager.job;
 
-import lombok.extern.slf4j.Slf4j;
 import org.quartz.*;
 
 import java.io.Serializable;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.HashMap;
 
 /**
  * Job 的实例要到该执行它们的时候才会实例化出来。每次 Job 被执行，一个新的 Job 实例会被创建。
@@ -23,9 +21,8 @@ public class JobSeri implements Job, Serializable {
     public void execute(JobExecutionContext context){
         JobDetail jobDetail = context.getJobDetail();
         JobDataMap dataMap = jobDetail.getJobDataMap();
-        /**
-         * 获取任务中保存的方法名字，动态调用方法
-         */
+
+         //获取任务中保存的方法名字，动态调用方法
         String methodName = dataMap.getString("methodName");
         try {
             JobSeri job = new JobSeri();

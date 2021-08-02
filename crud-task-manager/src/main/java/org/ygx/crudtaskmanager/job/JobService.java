@@ -4,13 +4,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.mybatis.spring.annotation.MapperScan;
 import org.quartz.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.AutoConfigureOrder;
 import org.springframework.stereotype.Service;
 import org.ygx.crudtaskmanager.module.TaskEntity;
 import org.ygx.crudtaskmanager.service.TaskEntityServiceImpl;
 
-import java.beans.PropertyDescriptor;
-import java.lang.reflect.Method;
 
 /**
  * quartz对任务的操作工具类

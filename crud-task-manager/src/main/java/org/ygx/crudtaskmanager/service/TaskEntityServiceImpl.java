@@ -1,9 +1,6 @@
 package org.ygx.crudtaskmanager.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
-import com.baomidou.mybatisplus.core.toolkit.Wrappers;
-import org.apache.commons.beanutils.BeanUtils;
 import org.quartz.CronExpression;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,8 +8,6 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.ygx.crudtaskmanager.module.TaskEntity;
 import org.ygx.crudtaskmanager.mapper.TaskEntityMapper;
 
-import java.beans.PropertyDescriptor;
-import java.lang.reflect.Method;
 import java.util.List;
 
 /**

@@ -1,6 +1,5 @@
 package org.ygx.crudtaskmanager.service;
 
-import org.springframework.scheduling.config.Task;
 import org.ygx.crudtaskmanager.module.TaskEntity;
 
 import java.util.List;
